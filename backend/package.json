@@ -27,6 +27,7 @@
     "@prisma/client": "6.19",
     "@types/cors": "^2.8.19",
     "body-parser": "^2.2.1",
+    "bson": "^7.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",

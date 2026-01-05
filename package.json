@@ -17,6 +17,7 @@
     "electron": "electron electron.ts"
   },
   "dependencies": {
+    "@iconify/react": "^6.0.2",
     "@react-router/node": "7.10.1",
     "@react-router/serve": "7.10.1",
     "@types/electron": "^1.6.12",

@@ -13,3 +13,21 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model Flashcard{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  word String @db.String
+  description String? @db.String
+  translationIDs String[]   @db.ObjectId
+  translations Translation[] @relation(fields: [translationIDs], references: [id])
+  @@map("flashcards")
+}
+
+model Translation{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  language String @db.String
+  word String @db.String
+  flashcardIDs String[]   @db.ObjectId
+  flashcards Flashcard[] @relation(fields: [flashcardIDs], references: [id])
+  @@map("translations")
+}
