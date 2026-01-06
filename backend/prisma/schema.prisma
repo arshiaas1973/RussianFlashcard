@@ -10,24 +10,35 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model Flashcard{
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  word String @db.String
-  description String? @db.String
-  translationIDs String[]   @db.ObjectId
-  translations Translation[] @relation(fields: [translationIDs], references: [id])
+  id Int @id @default(autoincrement())
+  word String
+  description String?
+  translations TranslationsOnFlashcards[]
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt
   @@map("flashcards")
 }
 
 model Translation{
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  language String @db.String
-  word String @db.String
-  flashcardIDs String[]   @db.ObjectId
-  flashcards Flashcard[] @relation(fields: [flashcardIDs], references: [id])
+  id Int @id @default(autoincrement())
+  language String
+  word String
+  flashcards TranslationsOnFlashcards[]
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @updatedAt
   @@map("translations")
+}
+
+model TranslationsOnFlashcards{
+  flashcard Flashcard @relation(fields: [flashcardId], references: [id])  
+  flashcardId Int
+  translation Translation @relation(fields: [translationId], references: [id])
+  translationId Int
+  @@map("translations_on_flashcards")
+  @@id([flashcardId, translationId])
 }

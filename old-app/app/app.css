@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@import "../assets/fonts/Inter/style.css";
+@import "../assets/fonts/Marck/style.css";
+@import "../assets/fonts/Roboto/style.css";
+@import "../assets/fonts/Oswald/style.css";
+@import "../assets/fonts/Lalezar/style.css";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-russian-handwriting: var(--russian-handwriting-font);
+  --font-russian: var(--russian-font);
+  --font-general: var(--general-font);
+  --font-persian: var(--persian-font);
+}
+
+:root{
+  --russian-handwriting-font: Marck;
+  --russian-font: Roboto, Oswald;
+  --general-font: Inter;
+  --persian-font: Lalezar;
+}
+
+html,
+body {
+  @apply bg-white dark:bg-gray-950;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}

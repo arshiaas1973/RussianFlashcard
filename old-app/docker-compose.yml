@@ -1,0 +1,25 @@
+services:
+  mongo:
+    image: mongo
+    restart: always
+    env_file:
+      - .env
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all", "--auth", "--keyFile", "/data/keyfile/mongo-keyfile"]
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+      - ./mongo-data/keyfile/mongo-keyfile:/data/keyfile/mongo-keyfile:ro
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongo
+    env_file:
+      - .env
+
+volumes:
+  mongo-data:
