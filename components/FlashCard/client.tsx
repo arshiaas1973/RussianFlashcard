@@ -11,9 +11,7 @@ export const FlashCard = () => {
         getRandomFlashcard().then(d => {
             setData(d?.result);
             console.log(d);
-            if(d?.status === "success" && d?.description !== ""){
-                setLoading(false);
-            }
+            setLoading(false);
         });
     }, []);
     useEffect(()=>{
