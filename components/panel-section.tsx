@@ -2,7 +2,7 @@
 
 import { Icon } from "@iconify/react";
 import { useState } from "react";
-import { FlashCard } from "@/components/flashcard";
+import { FlashCard } from "@/components/FlashCard/client";
 import { Settings } from "@/components/settings";
 
 export const PanelSection = () => {

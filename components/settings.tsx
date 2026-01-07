@@ -65,7 +65,7 @@ export const Settings = () => {
                     <h2 className="font-general font-semibold text-[36px]">
                         Translations:
                     </h2>
-                    <button className="cursor-pointer hover:text-sky-500 transition-colors duration-300 ease-linear" onClick={() => {
+                    <button className="cursor-pointer hover:text-sky-500 transition-colors duration-300 ease-linear " onClick={() => {
                         if (translations.length > 0) {
                             let translation = translations[translations.length - 1];
                             if (translation.word.trim().length <= 0 || translation.language.trim().length <= 0) return;
@@ -122,12 +122,12 @@ export const Settings = () => {
                     }
                 </div>
                 <div className="flex flex-row justify-between items-center">
-                    <button className="px-4 py-1.5 rounded-lg bg-sky-600/80 w-fit hover:bg-sky-600/55 cursor-pointer transition-colors duration-300 ease-linear" onClick={()=>{
+                    <button className="px-4 py-1.5 rounded-lg bg-sky-600/80 w-fit hover:bg-sky-600/55 cursor-pointer transition-colors duration-300 ease-linear font-general font-medium" onClick={()=>{
                         submitForm();
                     }}>
                         Save it!
                     </button>
-                    <button className="px-4 py-1.5 rounded-lg bg-red-600/80 w-fit hover:bg-red-600/55 cursor-pointer transition-colors duration-300 ease-linear" onClick={()=>{
+                    <button className="px-4 py-1.5 rounded-lg bg-red-600/80 w-fit hover:bg-red-600/55 cursor-pointer transition-colors duration-300 ease-linear font-general font-medium" onClick={()=>{
                         resetForm();
                     }}>
                         Reset it!

@@ -35,3 +35,32 @@ export const createFlashcard = async (data: FormData) => {
         }
     }
 };
+export const getRandomFlashcard = async () => {
+    console.log(process.env.NEXT_BACKEND_ORIGIN);
+    try{
+        const response: AxiosResponse & {
+            data: {
+                status: "success" | "failed",
+                result: string
+            }
+        } = await axios.get(
+            '/api/v1/flashcards/random',
+            {
+                baseURL: process.env.NEXT_BACKEND_ORIGIN,
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'X-API-Key': process.env.NEXT_API_KEY || '',
+                },
+            }
+        );
+
+        return response.data;
+    }catch(ex){
+        console.log(ex);
+        // console.log((ex as any)?.response);
+        // console.log((ex as any)?.request);
+        if(isAxiosError(ex) && ex.response){
+            return ex.response?.data;
+        }
+    }
+};
