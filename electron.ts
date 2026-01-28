@@ -1,9 +1,10 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, Tray, Menu } from "electron";
 import path from "path";
 import { fileURLToPath } from "url";
 import isDev from "electron-is-dev";
 
 let mainWindow: BrowserWindow;
+let tray: Tray;
 
 let timer = setInterval(()=>{
     if(!mainWindow.isVisible())
@@ -30,6 +31,11 @@ function createWindow() {
     if(mainWindow.isVisible())
         mainWindow.hide();
   });
+
+  tray = new Tray('./app/favicon.ico');
+  const contextMenu = Menu.buildFromTemplate([
+    { label: "Quit", type: "normal", click: closeWindow },
+  ]);
 }
 
 function closeWindow(){

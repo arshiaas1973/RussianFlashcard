@@ -32,7 +32,11 @@ export const PanelSection = () => {
 
                     setMode(0);
                 }}>
-                    <Icon icon="line-md:cog-loop" className="size-6" />
+                    {
+                        (<Icon icon="line-md:cog-loop" className="size-6" />)
+                        ||
+                        (<span>hey</span>)
+                    }
                 </button>
             </div>
         </>

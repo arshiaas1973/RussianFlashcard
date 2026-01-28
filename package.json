@@ -2,10 +2,18 @@
   "name": "new-app",
   "version": "0.1.0",
   "private": true,
+  "build": {
+    "appId": "com.example.myapp",
+    "productName": "My Electron App",
+    "directories": {
+      "output": "dist"
+    }
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "electron": "electron electron.ts"
   },
   "dependencies": {
     "@iconify/react": "^6.0.2",
@@ -17,7 +25,11 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "server-only": "^0.0.1",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "@types/electron": "^1.6.12",
+    "electron-builder": "^26.0.12",
+    "electron": "^39.2.7",
+    "electron-is-dev": "^3.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

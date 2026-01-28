@@ -35,8 +35,21 @@ app.get("/api/v1/flashcards/random", async (req, res) => {
     const count = await prisma.flashcard.count();
     const skip = Math.floor(Math.random() * count);
     const result = await prisma.flashcard.findMany({
-        take: 5,
+        take: 1,
         skip: skip,
+        include: {
+            translations:{
+                select:{
+                    translation:{
+                        select:{
+                            id: true,
+                            word: true,
+                            language: true,
+                        }
+                    }
+                }
+            }
+        }
     });
     await res.status(200).json({
         status: "success",
