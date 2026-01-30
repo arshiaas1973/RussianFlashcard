@@ -40,7 +40,7 @@ export const FlashCard = () => {
                     <h2 className="text-[36px] font-medium font-russian-handwriting leading-10">/{data?.word}/</h2>
                 </div>
                 {
-                    data?.translations?.map((item)=>{
+                    data?.translations?.map((item,index)=>{
                         const lang = detectLang(item.translation.word[0]);
                         return (
                             <h3 className={clsx(
@@ -53,13 +53,16 @@ export const FlashCard = () => {
                                     1: "var(--russian-font)",
                                     2: "var(--general-font)",
                                 }[lang]
-                                }}>{item.translation.word}</h3>
+                                }}
+                                key={index}>{item.translation.word}</h3>
                         );
                     })
                 }
                 <p className="text-base font-general max-w-[min(1000px,(100%-100px))]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, dolores vero? Tenetur, quasi nostrum autem non illum exercitationem porro inventore repudiandae pariatur recusandae vitae quia. Illo dolore exercitationem id atque.</p>
             </div>
-            <button className="px-4 py-1.5 rounded-lg bg-sky-600/80 w-fit hover:bg-sky-600/55 cursor-pointer transition-colors duration-300 ease-linear font-general font-medium">
+            <button className="px-4 py-1.5 rounded-lg bg-sky-600/80 w-fit hover:bg-sky-600/55 cursor-pointer transition-colors duration-300 ease-linear font-general font-medium" onClick={()=>{
+                window?.electronAPI?.closeWindow();
+            }}>
                 Learned it!
             </button>
         </>
